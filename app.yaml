@@ -1,0 +1,12 @@
+runtime: go113
+
+main: gosrv
+
+inbound_services:
+- warmup
+
+handlers: 
+- url: /.*
+  script: auto
+  secure: always
+  redirect_http_response_code: 301

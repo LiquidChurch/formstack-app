@@ -1,0 +1,17 @@
+{
+  "name": "formstack-app",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "reflex -sr '\\.go$' -- sh -c 'go run gosrv/main.go'",
+    "deploy": "gcloud app deploy",
+    "build": "cd ngapp && ng build --watch",
+    "build-prod": "cd ngapp && ng build --prod=true"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not dead",
+    "> 0.5%",
+    "not IE 11",
+    "ios_saf 9-13"
+  ]
+}
