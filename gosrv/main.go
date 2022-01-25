@@ -54,6 +54,7 @@ func main() {
 	})
   
   r.Handle("/query", authorizations.AdminAuthnCheck(&relay.Handler{Schema: schema}))
+  r.HandleFunc("/upload", uploadHandler)
   r.PathPrefix("/giql").Handler(giqlapp)
   r.PathPrefix("/").Handler(ngapp)
   
@@ -98,4 +99,33 @@ func (h spaHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
   }
 	http.FileServer(http.Dir(h.staticPath)).ServeHTTP(w, r)
+}
+
+func uploadHandler(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case "GET":
+    log.Println("Upload GET Method")
+		//display(w, "upload", nil)
+	case "POST":
+		uploadFile(w, r)
+	}
+}
+
+// PDF Blog Upload
+func uploadFile(w http.ResponseWriter, r *http.Request) {
+	// Maximum upload of 10 MB files
+	r.ParseMultipartForm(10 << 20)
+
+	// Get handler for filename, size and headers
+	file, handler, err := r.FormFile("myFile")
+	if err != nil {
+		log.Println("Error Retrieving the File")
+		log.Println(err)
+		return
+	}
+
+	defer file.Close()
+	log.Printf("Uploaded File: %+v\n", handler.Filename)
+	log.Printf("File Size: %+v\n", handler.Size)
+	log.Printf("MIME Header: %+v\n", handler.Header)
 }

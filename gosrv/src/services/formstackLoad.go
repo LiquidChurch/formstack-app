@@ -10,10 +10,10 @@ import (
 )
 
 type formstackResponse struct {
-    Fields []models.FormstackField
+    Fields []models.FieldDetail
 }
 
-func FormstackLoad(c helpers.ContextDetail, formID string) (*[]models.FormstackField, error) {
+func FormstackLoad(c helpers.ContextDetail, formID string) (*[]models.FieldDetail, error) {
     url := "https://www.formstack.com/api/v2/form/" + formID + "/field"
     
     client := &http.Client{
@@ -29,7 +29,7 @@ func FormstackLoad(c helpers.ContextDetail, formID string) (*[]models.FormstackF
         err := errors.New("Formstack API Error: 0010")
         return nil, err
     }
-    req.Header.Set("Authorization", "Bearer 7a07944b8066d28e8620a30fd15db898")  
+    req.Header.Set("Authorization", "Bearer b28cac5418e9e749192345a21ea706ad")  
   
     resp, err := client.Do(req)
     if err != nil {
@@ -56,7 +56,7 @@ func FormstackLoad(c helpers.ContextDetail, formID string) (*[]models.FormstackF
         return nil, err
     }
     
-    var respJson = new([]models.FormstackField)
+    var respJson = new([]models.FieldDetail)
     
     err = json.Unmarshal(body, &respJson)
     if err != nil {

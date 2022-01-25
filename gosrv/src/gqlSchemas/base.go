@@ -14,12 +14,17 @@ var Schema = `
   type Query {
     health(): StatusDetail
     sessionDetail(): SessionDetail
-    syncForm(formID: String!): StatusDetail
-    getForm(formID: String!): [FieldDetail]
+    formstackSync(formstackID: String!): StatusDetail
+    fieldsByFormstackID(formstackID: String!): [FieldDetail]
+    seriesByUri(uri: String!): SeriesDetail
+    formByUri(uri: String!): FormDetail
+    seriesList: [SeriesDetail]
   }
 
   type Mutation {
-    saveField(input: EntryInput!): EntryDetail
+    entrySave(input: EntryInput!): EntryDetail
+    seriesSave(input: SeriesInput!): SeriesDetail
+    formSave(input: FormInput!): FormDetail
   }
 
   type StatusDetail {
@@ -39,6 +44,27 @@ var Schema = `
     expiration: Int!
   }  
 
+  type SeriesDetail {
+    id: String!
+    name: String!
+    uri: String!
+    imageUrl: String!
+    year: Int!
+    forms: [FormDetail]
+  }
+
+  type FormDetail {
+    id: String!
+    type: String!
+    formstackId: String!
+    name: String!
+    uri: String!
+    imageUrl: String!
+    seriesUri: String!
+    part: Int!
+    fields: [FieldDetail]
+  }
+
   type FieldDetail {
     fieldId: String!
     label: String!
@@ -46,14 +72,35 @@ var Schema = `
     name: String!
     type: String!
     sectionText: String!
-    sort: String!
+    sort: Int!
     required: String!
+    defaultValue: String!
     entry: EntryDetail!
+    isLeader: Boolean!
   }
 
   type EntryDetail {
     fieldId: String!
     entry: String!
+  }
+
+  input SeriesInput {
+    id: String!
+    imageUrl: String!
+    name: String!
+    uri: String!
+    year: Int!
+  }
+
+  input FormInput {
+    id: String!
+    type: String!
+    formstackId: String!
+    name: String!
+    uri: String!
+    imageUrl: String!
+    seriesId: String!
+    part: Int!
   }
 
   input EntryInput {
