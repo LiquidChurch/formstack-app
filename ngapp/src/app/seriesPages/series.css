@@ -1,0 +1,84 @@
+.header-img {
+  width: 100%;
+  margin-left: -24px;
+  margin-right:-24px;
+  border-radius: 12px;
+}
+
+.guide-img {
+  height: 206px;
+  object-fit: scale-down;
+  width: 366px;
+  vertical-align: bottom;
+  margin-bottom: -45px;
+  border-radius:12px;
+}
+
+.guide-text {
+  margin-top: 50px;
+}
+
+.guide-body {
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -26px;
+}
+
+.form-body {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.form-card {
+  flex: 1 0 calc(50% - 1rem);
+  margin: 0 0rem;
+  text-align:center;
+}
+
+.note-card {
+  flex: 1 0 calc(50% - 1rem);
+  margin: 0 0;
+  width: 828px;
+}
+
+.guide-link {
+  color: #009DD1;
+  cursor: pointer;
+  border-radius: 1em;
+  font-weight:400;
+}
+
+.guide-link:hover {
+  background-color: rgba(0,0,0,0.1);
+  border-radius:12px;
+}
+
+@media (max-width: 991px) {
+  .guide-img {
+    width: 362px;
+  }
+}
+
+@media (max-width: 899px) {
+  .guide-img {
+    margin-bottom: -30px;
+  }
+  
+  .note-card {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 766px) {
+  .header-img {
+    margin-right:-40px;
+  }
+}
+
+.back-series{
+  left: 0px;
+  font-size:1.3em;
+}

@@ -1,0 +1,43 @@
+<div [ngSwitch]="fieldCopy.type" #fieldElement>
+  <div *ngIf="!fieldCopy.isLeader || fieldCopy.isLeader == isLeaderMode">
+    <div *ngSwitchCase="'richtext'"  >
+      <div [outerHTML]="fieldCopy.sectionText | bibleRef | safeHtml "></div>
+    </div>
+    <div *ngSwitchCase="'textarea'">
+      <h3 [innerHTML]="fieldCopy.label | bibleRef "></h3>
+      <div *ngIf="isPDF; else fieldTextArea" >
+        <div *ngIf="!isBlank; else blankTextArea">
+          <p class="text-height" [class]="class">
+            {{ fieldModel }}
+          </p>          
+        </div>
+      </div>
+      <ng-template #blankTextArea>
+        <p class="text-height"  [class]="class">
+        </p>
+      </ng-template>
+      <ng-template #fieldTextArea>
+      <textarea nbInput 
+                fullWidth 
+                rows="3" 
+                [(ngModel)]="fieldModel"
+                (blur)="fieldOnBlur()"
+                class="form-textarea"
+                [class]="class"></textarea>
+      </ng-template>
+      <div [outerHTML]="fieldCopy.description | bibleRef "></div>
+      <div *ngIf="isLeaderMode">
+        <p class="leader" [innerHtml]="fieldCopy.defaultValue | bibleRef">
+        </p>
+      </div>      
+    </div>
+    <div *ngSwitchCase="'embed'">
+      <formEmbedComponent [field]="fieldCopy.sectionText"></formEmbedComponent>
+    </div>
+    <div *ngSwitchCase="'text'">
+      <h3 [innerHTML]="fieldCopy.label"></h3>
+      <input type="text" nbInput fullWidth>
+      <div [outerHTML]="fieldCopy.description"></div>
+    </div>  
+  </div>
+</div>

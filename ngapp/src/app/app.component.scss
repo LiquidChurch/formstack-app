@@ -1,0 +1,74 @@
+::ng-deep {
+  h1 {
+  font-size: 1.75rem;
+}
+}
+
+.header-icon {
+  background: url('/assets/liquid-logo.png') transparent 5px 50% no-repeat;
+  background-size: 30px 30px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 58px;
+  height: 30px;
+}
+
+.header-logo {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left:-20px;
+  font-size: 2em;
+  font-weight: 400;
+  color: #14A7E0;
+  /* Use the Roboto font that is loaded in the <head> */
+  font-family: 'Lato', sans-serif;
+}
+
+.header-title {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left:-20px;
+  font-size: 2em;
+  font-weight: 400;
+  color: #14A7E0;
+  /* Use the Roboto font that is loaded in the <head> */
+  font-family: 'Lato', sans-serif;
+  white-space: nowrap;
+}
+
+
+.header-name {
+  display: contents;
+  vertical-align: middle;
+  /* Use the Roboto font that is loaded in the <head> */
+  font-family: 'Roboto', sans-serif;
+}
+
+@media (max-width: 40rem) {
+  .header-name {
+    display: none;
+  }
+}
+
+@media (max-width: 766px) {
+  .header-icon {
+    margin-left: -6px;
+  }
+}
+
+@media (max-width: 459px) {
+  .header-icon {
+    width: 36px;
+  }
+  .header-logo {
+    display:none;
+  }
+}
+
+.nb-layout-header {nav.fixed {
+  height:15px;
+}}

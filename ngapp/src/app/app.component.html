@@ -1,0 +1,25 @@
+<nb-layout center>
+    <nb-layout-header fixed>
+      <nb-card style="margin-bottom: 0px; border: none; width:100%">   
+        <nb-card-body style="padding: 0px; overflow:hidden;">
+          <nb-actions style="background-color: #28343E;" size="small" fullWidth>
+            <nb-action style="height: 30px; padding-left: 0px; justify-content: flex-start;">
+              <a href="https://liquidchurch.com">
+                <span class="header-icon"></span>
+                <span class="header-logo">
+                  <b>Liquid</b>Church
+                </span>
+              </a>  
+            </nb-action>
+            <nb-action style="border:none; padding-right: 5px; justify-content: flex-end;">
+              <span class="header-title">Group Guides</span>
+            </nb-action>
+          </nb-actions>
+        </nb-card-body>
+      </nb-card>
+
+    </nb-layout-header>
+    <nb-layout-column>
+      <router-outlet></router-outlet>
+    </nb-layout-column>
+</nb-layout>

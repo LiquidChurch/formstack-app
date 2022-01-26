@@ -1,0 +1,91 @@
+.header-img {
+  width: 100%;
+  margin-left:-24px;
+  border-radius:12px;
+}
+
+.guide-img {
+  height: 206px;
+  object-fit: scale-down;
+  width: 366px;
+  vertical-align: bottom;
+  margin-bottom: -26px;
+  border-radius: 12px;
+}
+
+.guide-img:hover{
+  filter: brightness(0.7);
+  border: #FFF;
+  border-width: 3px;
+  border-style: solid;
+  height: 212px;
+  width: 372px;
+  margin-left: -3px;
+  margin-right: -3px;
+  margin-top: -3px;
+  margin-bottom: -29px;
+  border-radius: 16px;  
+}
+
+.guide-text {
+  margin-top: 50px;
+}
+
+.guide-body {
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -26px;
+}
+
+.form-body {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.form-card {
+  flex: 1 0 calc(50% - 1rem);
+  margin: 0 0rem;
+  text-align:center;
+}
+
+.note-card {
+  flex: 1 0 calc(50% - 1rem);
+  margin: 0 0;
+  width: 828px;
+}
+
+.guide-link {
+  color: #009DD1;
+  cursor: pointer;
+  border-radius: 1em;
+  font-weight:400;
+}
+
+.guide-link:hover {
+  background-color: rgba(0,0,0,0.1)
+}
+
+
+@media (max-width: 899px) {
+  .guide-img {
+    width: 366px;
+    margin-bottom: -30px;
+  }
+  
+  .guide-img:hover {
+    margin-bottom:-33px;
+  }
+  
+  .note-card {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 766px) {
+  .header-img {
+    margin-right:-40px;
+  }
+}

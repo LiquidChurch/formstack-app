@@ -1,0 +1,10 @@
+<div *ngIf="hasLoaded; else formLoading">
+  <div *ngFor="let field of fields | async">
+    <formFieldComponent #formField [field]="field"></formFieldComponent>
+  </div>
+</div>
+  <ng-template #formLoading>
+    <h2>
+      Loading...
+    </h2>
+  </ng-template>

@@ -1,0 +1,8 @@
+<h2>
+  PDF generating....
+</h2>
+<div *ngFor="let field of fields | async">
+  <div *ngIf="field.type != 'embed'">              
+    <formFieldComponent #formField [field]="field"></formFieldComponent>
+  </div>
+</div>

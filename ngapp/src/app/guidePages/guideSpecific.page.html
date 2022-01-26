@@ -1,0 +1,85 @@
+<div *ngIf="hasLoaded; else formLoading">
+  <div *ngIf="isPDF">
+    <h2>
+      PDF generated. Please check download folder for file. You can close this window.
+    </h2>
+  </div>
+</div>
+<ng-template #formLoading>
+    <h2>
+      {{ loadingText }}
+    </h2>
+</ng-template>
+
+<div *ngIf="!isPDF; else pdfPrint">
+  <div *ngIf="hasLoaded">
+    <nb-card>
+      <div *ngIf="guide | async as g">
+        <nb-actions size="small" fullWidth style="display:flex;">
+          <nb-action style="flex:auto;">
+            <a class="tooltip" on-click="onBack($event)" tabIndex="0">
+              <nb-icon icon="arrow-back-outline" status="primary"></nb-icon>
+              <span class="tooltiptext left">Back to Series</span>
+            </a>
+          </nb-action>          
+          <nb-action>
+            <a class="tooltip" [routerLink]="'/guide/' + guideUri" [queryParams]="{ pdf: 'true', leader: isLeader, blank: 'true' }" target="_blank">
+              <nb-icon icon="printer-outline" status="primary"></nb-icon>
+              <span class="tooltiptext right">Open Guide as PDF</span>
+            </a>
+          </nb-action>
+          <nb-action>
+            <a class="tooltip" [routerLink]="'/guide/' + guideUri" [queryParams]="{ pdf: 'true', leader: isLeader }" target="_blank">
+              <nb-icon icon="cloud-download-outline" status="primary"></nb-icon>
+              <span class="tooltiptext right">Save Filled PDF</span>
+            </a>
+          </nb-action>
+        </nb-actions>
+        <nb-card-header>
+          <img [src]="g.imageUrl" class=header-img> 
+        </nb-card-header>
+        <h1>
+          {{ g.name }}
+        </h1>
+      </div>
+    </nb-card>
+    <div *ngFor="let field of fields | async">
+      <formFieldComponent #formField [field]="field" class="normal"></formFieldComponent>
+    </div>
+        <nb-card>
+      <div *ngIf="guide | async as g">
+        <nb-actions size="small" fullWidth style="display:flex;">
+          <nb-action style="flex:auto;">
+            <a class="tooltip" on-click="onBack($event)" tabIndex="0">
+              <nb-icon icon="arrow-back-outline" status="primary"></nb-icon>
+              <span class="tooltiptext left">Back to Series</span>
+            </a>
+          </nb-action>          
+          <nb-action>
+            <a class="tooltip" [routerLink]="'/guide/' + guideUri" [queryParams]="{ pdf: 'true', leader: isLeader, blank: 'true' }" target="_blank">
+              <nb-icon icon="printer-outline" status="primary"></nb-icon>
+              <span class="tooltiptext right">Open Guide as PDF</span>
+            </a>
+          </nb-action>
+          <nb-action>
+            <a class="tooltip" [routerLink]="'/guide/' + guideUri" [queryParams]="{ pdf: 'true', leader: isLeader }" target="_blank">
+              <nb-icon icon="cloud-download-outline" status="primary"></nb-icon>
+              <span class="tooltiptext right">Save Filled PDF</span>
+            </a>
+          </nb-action>
+        </nb-actions>
+      </div>
+        <p class="guide-copyright"> 
+          ©2020 Liquid Church
+        </p>
+    </nb-card>
+  </div>  
+</div>
+
+<ng-template #pdfPrint>
+  <div *ngFor="let field of fields | async">
+    <div *ngIf="field.type != 'embed'">              
+      <formFieldComponent #formField [field]="field" class="pdf"></formFieldComponent>
+    </div>
+  </div>  
+</ng-template>

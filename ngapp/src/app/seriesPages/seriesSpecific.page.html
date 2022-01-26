@@ -1,0 +1,50 @@
+<div *ngIf="hasLoaded; else formLoading">
+  <nb-card>
+    <div *ngIf="series | async as s">
+      <nb-actions size="small" fullWidth style="display:flex;">
+          <nb-action style="display:block;">
+            <a href="/" tabIndex="0">
+              <span class="back-series">Back</span>
+            </a>
+          </nb-action>
+      </nb-actions>
+      <nb-card-header>
+        <img [src]="s.imageUrl" class=header-img> 
+      </nb-card-header>
+      <nb-card-body>
+        <div class="form-body">
+          <div *ngFor="let form of s.forms"  >
+            <div *ngIf="form.type == 'guides'" class="form-card">
+              <nb-card>
+                <nb-card-header>
+                  <img [src]="form.imageUrl" class=guide-img>
+                <h3 class="guide-text">
+                  {{ form.name }}
+                </h3>
+                </nb-card-header>
+                <nb-card-body class=guide-body>
+                  <nb-actions size="large" fullWidth="true">
+                    <nb-action [routerLink]="'/guide/' + form.uri" href="'/guide/' + form.uri" class=guide-link>Participant's Guide</nb-action>
+                    <nb-action [routerLink]="'/guide/' + form.uri" class=guide-link [queryParams]="{ leader: 'true'}">Leader's Guide</nb-action>
+                  </nb-actions>
+                </nb-card-body> 
+              </nb-card>
+            </div>
+            <div *ngIf="form.type == 'note'" class="note-card">
+              <nb-card>
+              <h3>
+                <a [routerLink]="'/guide/' + form.uri">{{ form.name }}</a>
+              </h3>
+              </nb-card>
+            </div>
+          </div>
+        </div>
+      </nb-card-body>
+    </div>
+  </nb-card>  
+  </div>
+  <ng-template #formLoading>
+    <h2>
+      Loading...
+    </h2>
+  </ng-template>

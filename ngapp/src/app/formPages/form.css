@@ -1,0 +1,21 @@
+.leader {
+  color: #2c82c9;
+}
+
+.form-textarea {
+  margin: 0;
+  line-height: 24px !important;
+}
+
+.text-height {
+    min-height: 75px;
+    background: #f8f8f8;
+    padding: 5px 12px;
+}
+
+.normal {
+}
+
+.pdf {
+  
+}
